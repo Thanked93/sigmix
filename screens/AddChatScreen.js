@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 import { Button, Input, Image } from "react-native-elements";
 import Icon from "@expo/vector-icons/FontAwesome";
 import { db } from "../firebase";
-
+import firebase from "firebase/app";
 const AddChatScreen = ({ navigation }) => {
   const [input, setInput] = useState("");
 
@@ -17,7 +17,7 @@ const AddChatScreen = ({ navigation }) => {
   const createChat = async () => {
     await db
       .collection("chats")
-      .add({ chatName: input })
+      .add({ chatName: input, timestamp: firebase.firestore.FieldValue.serverTimestamp() })
       .then(() => {
         navigation.goBack();
       })

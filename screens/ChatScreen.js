@@ -23,7 +23,7 @@ const ChatScreen = ({ navigation, route }) => {
       .collection("chats")
       .doc(route.params.id)
       .collection("messages")
-      .orderBy("timestamp", "desc")
+      .orderBy("timestamp", "asc")
       .onSnapshot((snapShot) => setMessages(snapShot.docs.map((doc) => ({ id: doc.id, data: doc.data() }))));
   }, [route]);
 
@@ -68,6 +68,7 @@ const ChatScreen = ({ navigation, route }) => {
 
   const sendMessage = () => {
     Keyboard.dismiss();
+    if (!input) return;
     db.collection("chats").doc(route.params.id).collection("messages").add({
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       message: input,

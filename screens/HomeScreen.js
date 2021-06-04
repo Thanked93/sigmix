@@ -11,16 +11,19 @@ const HomeScreen = ({ navigation }) => {
   const [chats, setChats] = useState([]);
 
   useEffect(() => {
-    const unsubscribe = db.collection("chats").onSnapshot((snapShot) =>
-      setChats(
-        snapShot.docs.map((doc) => {
-          return {
-            id: doc.id,
-            data: doc.data(),
-          };
-        })
-      )
-    );
+    const unsubscribe = db
+      .collection("chats")
+      .orderBy("timestamp", "desc")
+      .onSnapshot((snapShot) =>
+        setChats(
+          snapShot.docs.map((doc) => {
+            return {
+              id: doc.id,
+              data: doc.data(),
+            };
+          })
+        )
+      );
 
     return unsubscribe;
   }, []);
