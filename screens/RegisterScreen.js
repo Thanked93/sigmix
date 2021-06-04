@@ -21,7 +21,7 @@ const RegisterScreen = ({ navigation }) => {
     auth
       .createUserWithEmailAndPassword(email, password)
       .then((authUser) => {
-        authUser.user.update({
+        authUser.update({
           displayName: name,
           photoURL: imageUrl || "https://cencup.com/wp-content/uploads/2019/07/avatar-placeholder.png",
         });
@@ -44,7 +44,6 @@ const RegisterScreen = ({ navigation }) => {
           secureTextEntry
           onChangeText={(text) => setPassword(text)}
           value={password}
-          onSubmitEditing={register}
         />
         <Input
           placeholder='Profile Picture URL (optional)'
