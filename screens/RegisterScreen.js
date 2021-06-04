@@ -61,7 +61,7 @@ const RegisterScreen = ({ navigation }) => {
 export default RegisterScreen;
 
 const styles = StyleSheet.create({
-  constainer: { flex: 1, alignItems: "center", justifyContent: "center", backgroundColor: "white", padding: 10 },
+  container: { flex: 1, alignItems: "center", justifyContent: "center", backgroundColor: "white", padding: 10 },
   button: { width: 200, marginTop: 10 },
   inputContainer: { width: 300 },
 });

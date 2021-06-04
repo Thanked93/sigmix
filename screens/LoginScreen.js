@@ -24,7 +24,7 @@ const LoginScreen = ({ navigation }) => {
   };
 
   return (
-    <KeyboardAvoidingView behavior='padding' style={styles.containter}>
+    <KeyboardAvoidingView behavior='padding' style={styles.container}>
       <StatusBar style='light' />
       <Image
         source={{
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   button: {
-    marginTop: 10,
+    marginTop: 5,
     width: 200,
   },
   container: {
