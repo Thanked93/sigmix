@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import { TouchableOpacity } from "react-native";
 import { SafeAreaView, ScrollView, StyleSheet, View } from "react-native";
 import { Avatar } from "react-native-elements";
@@ -7,8 +7,11 @@ import { auth } from "../firebase";
 import { AntDesign, SimpleLineIcons } from "@expo/vector-icons";
 
 const HomeScreen = ({ navigation }) => {
+  const [chats, setChats] = useState();
+
   const signOut = () => {
-    auth.signOut
+    auth
+      .signOut()
       .then(() => {
         navigation.replace("Login");
       })
